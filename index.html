@@ -102,26 +102,39 @@
 
             </a-entity>
 
+            
             <!-- SATURN -->
             <a-entity mindar-image-target="targetIndex: 3">
 
-                <a-sphere
-                    radius="0.5"
-                    position="0 0 0"
-                    material="src: #saturnTexture; roughness: 1"
-                    animation="property: rotation; to: 0 360 0; dur: 22000; easing: linear; loop: true">
-                </a-sphere>
+                <!-- Saturn group -->
+                <a-entity position="0 0 0" scale="0.75 0.75 0.75">
 
-                <!-- Saturn rings -->
-                <a-torus
-                    position="0 0 0"
-                    radius="0.78"
-                    radius-tubular="0.035"
-                    rotation="75 0 0"
-                    color="#C9A66B">
-                </a-torus>
+                    <!-- Saturn planet -->
+                    <a-sphere
+                        radius="0.5"
+                        material="src: #saturnTexture; roughness: 1"
+                        animation="property: rotation; to: 0 360 0; dur: 45000; easing: linear; loop: true">
+                    </a-sphere>
+
+                    <!-- Flat rings -->
+                    <a-ring
+                        radius-inner="0.62"
+                        radius-outer="1.05"
+                        rotation="75 0 0"
+                        material="color: #C9A66B; side: double; opacity: 0.85; transparent: true">
+                    </a-ring>
+
+                    <a-ring
+                        radius-inner="1.08"
+                        radius-outer="1.18"
+                        rotation="75 0 0"
+                        material="color: #A88A60; side: double; opacity: 0.65; transparent: true">
+                    </a-ring>
+
+                </a-entity>
 
             </a-entity>
+
 
         </a-scene>
 
