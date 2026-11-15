@@ -53,10 +53,17 @@
             <!-- Planet textures -->
             <a-assets>
 
-             <img id="earthTexture" src="assets/textures/2k_earth.jpg">
-             <img id="marsTexture" src="assets/textures/2k_mars.jpg">
-             <img id="jupiterTexture" src="assets/textures/2k_jupiter.jpg">
-             <img id="saturnTexture" src="assets/textures/2k_saturn.jpg">
+                <img id="earthTexture"
+                     src="assets/textures/2k_earth_daymap.jpg">
+
+                <img id="marsTexture"
+                     src="assets/textures/2k_mars.jpg">
+
+                <img id="jupiterTexture"
+                     src="assets/textures/2k_jupiter.jpg">
+
+                <img id="saturnTexture"
+                     src="assets/textures/2k_saturn.jpg">
 
             </a-assets>
 
@@ -71,7 +78,6 @@
 
                 <a-sphere
                     radius="0.5"
-                    position="0 0 0"
                     material="src: #earthTexture; roughness: 1"
                     animation="property: rotation; to: 0 360 0; dur: 20000; easing: linear; loop: true">
                 </a-sphere>
@@ -83,7 +89,6 @@
 
                 <a-sphere
                     radius="0.5"
-                    position="0 0 0"
                     material="src: #marsTexture; roughness: 1"
                     animation="property: rotation; to: 0 360 0; dur: 18000; easing: linear; loop: true">
                 </a-sphere>
@@ -95,46 +100,22 @@
 
                 <a-sphere
                     radius="0.65"
-                    position="0 0 0"
                     material="src: #jupiterTexture; roughness: 1"
                     animation="property: rotation; to: 0 360 0; dur: 25000; easing: linear; loop: true">
                 </a-sphere>
 
             </a-entity>
 
-            
-            <!-- SATURN -->
+            <!-- SATURN: TEMPORARY STABILITY TEST -->
             <a-entity mindar-image-target="targetIndex: 3">
 
-                <!-- Saturn group -->
-                <a-entity position="0 0 0" scale="0.75 0.75 0.75">
-
-                    <!-- Saturn planet -->
-                    <a-sphere
-                        radius="0.5"
-                        material="src: #saturnTexture; roughness: 1"
-                        animation="property: rotation; to: 0 360 0; dur: 45000; easing: linear; loop: true">
-                    </a-sphere>
-
-                    <!-- Flat rings -->
-                    <a-ring
-                        radius-inner="0.62"
-                        radius-outer="1.05"
-                        rotation="75 0 0"
-                        material="color: #C9A66B; side: double; opacity: 0.85; transparent: true">
-                    </a-ring>
-
-                    <a-ring
-                        radius-inner="1.08"
-                        radius-outer="1.18"
-                        rotation="75 0 0"
-                        material="color: #A88A60; side: double; opacity: 0.65; transparent: true">
-                    </a-ring>
-
-                </a-entity>
+                <a-sphere
+                    radius="0.5"
+                    position="0 0 0"
+                    material="src: #saturnTexture; roughness: 1">
+                </a-sphere>
 
             </a-entity>
-
 
         </a-scene>
 
