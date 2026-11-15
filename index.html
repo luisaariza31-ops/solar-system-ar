@@ -106,16 +106,41 @@
 
             </a-entity>
 
-            <!-- SATURN: TEMPORARY STABILITY TEST -->
+            
+            <!-- SATURN -->
             <a-entity mindar-image-target="targetIndex: 3">
 
-                <a-sphere
-                    radius="0.5"
+                <!-- Saturn group -->
+                <a-entity
                     position="0 0 0"
-                    material="src: #saturnTexture; roughness: 1">
-                </a-sphere>
+                    scale="0.65 0.65 0.65"
+                    animation="property: rotation; to: 0 360 0; dur: 60000; easing: linear; loop: true">
+
+                    <!-- Saturn planet -->
+                    <a-sphere
+                        radius="0.5"
+                        material="src: #saturnTexture; roughness: 1">
+                    </a-sphere>
+
+                    <!-- Saturn flat rings -->
+                    <a-ring
+                        radius-inner="0.62"
+                        radius-outer="1.05"
+                        rotation="75 0 0"
+                        material="color: #D8C49A; side: double; opacity: 0.85; transparent: true">
+                    </a-ring>
+
+                    <a-ring
+                        radius-inner="1.06"
+                        radius-outer="1.16"
+                        rotation="75 0 0"
+                        material="color: #A88A60; side: double; opacity: 0.65; transparent: true">
+                    </a-ring>
+
+                </a-entity>
 
             </a-entity>
+
 
         </a-scene>
 
