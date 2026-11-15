@@ -24,16 +24,49 @@
 
         <h1>Solar System AR</h1>
 
-        <p>
+        <p class="welcome-description">
             Discover the wonders of our solar system
             through augmented reality.
         </p>
 
         <p class="subtitle">
-            Explore Earth, Mars, Jupiter and Saturn!
+            Choose a planet to begin your exploration!
         </p>
 
-        <button id="start-button">
+        <!-- Planet selection -->
+        <div class="planet-selection">
+
+            <button class="planet-card selected" data-planet="0" type="button">
+                <span class="planet-icon earth-icon"></span>
+                <span class="planet-name">EARTH</span>
+                <span class="planet-description">Our home planet</span>
+            </button>
+
+            <button class="planet-card" data-planet="1" type="button">
+                <span class="planet-icon mars-icon"></span>
+                <span class="planet-name">MARS</span>
+                <span class="planet-description">The Red Planet</span>
+            </button>
+
+            <button class="planet-card" data-planet="2" type="button">
+                <span class="planet-icon jupiter-icon"></span>
+                <span class="planet-name">JUPITER</span>
+                <span class="planet-description">The largest planet</span>
+            </button>
+
+            <button class="planet-card" data-planet="3" type="button">
+                <span class="planet-icon saturn-icon"></span>
+                <span class="planet-name">SATURN</span>
+                <span class="planet-description">The ringed planet</span>
+            </button>
+
+        </div>
+
+        <p id="selection-message">
+            Selected planet: EARTH
+        </p>
+
+        <button id="start-button" type="button">
             Start Experience
         </button>
 
@@ -41,6 +74,19 @@
 
     <!-- AR container -->
     <div id="ar-container" class="ar-hidden">
+
+        <!-- Scan instructions -->
+        <div id="scan-ui" class="scan-ui">
+
+            <p id="scan-instructions">
+                Point your camera at the EARTH card
+            </p>
+
+            <p id="scan-status">
+                Searching for EARTH...
+            </p>
+
+        </div>
 
         <a-scene
             mindar-image="imageTargetSrc: assets/targets/targets.mind; autoStart: false; filterMinCF: 0.0001; filterBeta: 10;"
@@ -53,17 +99,10 @@
             <!-- Planet textures -->
             <a-assets>
 
-                <img id="earthTexture"
-                     src="assets/textures/2k_earth.jpg">
-
-                <img id="marsTexture"
-                     src="assets/textures/2k_mars.jpg">
-
-                <img id="jupiterTexture"
-                     src="assets/textures/2k_jupiter.jpg">
-
-                <img id="saturnTexture"
-                     src="assets/textures/2k_saturn.jpg">
+                <img id="earthTexture" src="assets/textures/2k_earth.jpg">
+                <img id="marsTexture" src="assets/textures/2k_mars.jpg">
+                <img id="jupiterTexture" src="assets/textures/2k_jupiter.jpg">
+                <img id="saturnTexture" src="assets/textures/2k_saturn.jpg">
 
             </a-assets>
 
@@ -77,14 +116,12 @@
             <!-- EARTH - TARGET 0 -->
             <a-entity mindar-image-target="targetIndex: 0">
 
-                <!-- Earth planet -->
                 <a-sphere
                     radius="0.5"
                     material="src: #earthTexture; roughness: 1"
                     animation="property: rotation; to: 0 360 0; dur: 20000; easing: linear; loop: true">
                 </a-sphere>
 
-                <!-- Earth information card -->
                 <a-plane
                     position="0 1.05 0.02"
                     width="1.7"
@@ -107,14 +144,12 @@
             <!-- MARS - TARGET 1 -->
             <a-entity mindar-image-target="targetIndex: 1">
 
-                <!-- Mars planet -->
                 <a-sphere
                     radius="0.5"
                     material="src: #marsTexture; roughness: 1"
                     animation="property: rotation; to: 0 360 0; dur: 18000; easing: linear; loop: true">
                 </a-sphere>
 
-                <!-- Mars information card -->
                 <a-plane
                     position="0 1.05 0.02"
                     width="1.7"
@@ -137,14 +172,12 @@
             <!-- JUPITER - TARGET 2 -->
             <a-entity mindar-image-target="targetIndex: 2">
 
-                <!-- Jupiter planet -->
                 <a-sphere
                     radius="0.65"
                     material="src: #jupiterTexture; roughness: 1"
                     animation="property: rotation; to: 0 360 0; dur: 25000; easing: linear; loop: true">
                 </a-sphere>
 
-                <!-- Jupiter information card -->
                 <a-plane
                     position="0 1.25 0.02"
                     width="1.7"
@@ -167,19 +200,16 @@
             <!-- SATURN - TARGET 3 -->
             <a-entity mindar-image-target="targetIndex: 3">
 
-                <!-- Saturn group -->
                 <a-entity
                     position="0 0 0"
                     scale="0.65 0.65 0.65"
                     animation="property: rotation; to: 0 360 0; dur: 60000; easing: linear; loop: true">
 
-                    <!-- Saturn planet -->
                     <a-sphere
                         radius="0.5"
                         material="src: #saturnTexture; roughness: 1">
                     </a-sphere>
 
-                    <!-- Saturn flat rings -->
                     <a-ring
                         radius-inner="0.62"
                         radius-outer="1.05"
@@ -196,7 +226,6 @@
 
                 </a-entity>
 
-                <!-- Saturn information card -->
                 <a-plane
                     position="0 1.05 0.02"
                     width="1.7"
@@ -219,7 +248,7 @@
 
     </div>
 
-    <!-- Exit AR button: outside the AR container -->
+    <!-- Exit AR button -->
     <button id="exit-button" class="exit-button" type="button">
         Exit AR
     </button>

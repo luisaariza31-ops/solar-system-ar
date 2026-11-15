@@ -1,5 +1,5 @@
 
-/* Estilos generales de la página */
+/* General page styles */
 body {
     margin: 0;
     padding: 0;
@@ -10,31 +10,152 @@ body {
     min-height: 100vh;
 }
 
-/* Título principal */
+/* Welcome screen */
+.welcome {
+    position: relative;
+    z-index: 10;
+    padding: 30px 20px 50px;
+    margin: 0 auto;
+    max-width: 850px;
+}
+
 h1 {
     font-size: 40px;
-    margin-top: 100px;
+    margin-top: 45px;
     color: #ffffff;
 }
 
-/* Texto descriptivo */
-p {
+.welcome-description {
     font-size: 18px;
     color: #c5c5e8;
 }
 
-/* Contenedor de bienvenida */
-.welcome {
-    padding: 40px 20px;
-    margin-top: 80px;
-}
-
-/* Subtítulo */
 .subtitle {
-    margin-top: 30px;
+    margin-top: 25px;
     font-size: 16px;
     color: #ffffff;
 }
+
+/* Planet selection */
+.planet-selection {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    max-width: 560px;
+    margin: 30px auto 20px;
+}
+
+.planet-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-height: 170px;
+    padding: 18px 10px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.planet-card:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.planet-card.selected {
+    border-color: #70C8FF;
+    background: rgba(64, 143, 205, 0.2);
+    box-shadow: 0 0 16px rgba(75, 173, 255, 0.25);
+}
+
+.planet-icon {
+    display: block;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    box-shadow: inset -10px -8px 18px rgba(0, 0, 0, 0.45),
+                0 0 15px rgba(255, 255, 255, 0.12);
+}
+
+.earth-icon {
+    background: radial-gradient(circle at 30% 30%, #8bd8ff, #1671b8 55%, #06416d);
+}
+
+.mars-icon {
+    background: radial-gradient(circle at 30% 30%, #ffc18b, #c64c27 55%, #702313);
+}
+
+.jupiter-icon {
+    background: repeating-linear-gradient(
+        0deg,
+        #d9b58d 0px,
+        #d9b58d 8px,
+        #a66f4d 10px,
+        #f0d1a5 16px
+    );
+}
+
+.saturn-icon {
+    position: relative;
+    background: radial-gradient(circle at 30% 30%, #f4dfae, #b9975d 60%, #72502c);
+}
+
+.saturn-icon::after {
+    content: "";
+    position: relative;
+    display: block;
+    width: 105px;
+    height: 25px;
+    border: 5px solid #d8c49a;
+    border-radius: 50%;
+    top: 20px;
+    left: -21px;
+    transform: rotate(-20deg);
+}
+
+.planet-name {
+    font-size: 17px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.planet-description {
+    font-size: 13px;
+    color: #c5c5e8;
+}
+
+#selection-message {
+    color: #9edbff;
+    font-size: 15px;
+    margin: 18px 0;
+}
+
+/* Start button */
+#start-button {
+    padding: 14px 30px;
+    border: none;
+    border-radius: 9px;
+    background-color: #2679bd;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#start-button:hover {
+    background-color: #3698e5;
+}
+
+#start-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
 /* AR scene */
 #ar-container {
     position: fixed;
@@ -46,16 +167,10 @@ p {
     visibility: hidden;
 }
 
-/* Show AR scene after clicking Start */
 #ar-container.ar-visible {
     visibility: visible;
 }
 
-/* Welcome screen */
-.welcome {
-    position: relative;
-    z-index: 10;
-}   
 /* Exit AR button */
 .exit-button {
     display: none;
@@ -75,4 +190,72 @@ p {
 
 .exit-button:hover {
     background-color: #1D4268;
+}
+
+/* Scan instructions */
+.scan-ui {
+    position: fixed;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+    max-width: 500px;
+    z-index: 1000;
+    text-align: center;
+    pointer-events: none;
+}
+
+#scan-instructions {
+    background-color: rgba(16, 36, 61, 0.9);
+    color: white;
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-size: 17px;
+    margin-bottom: 8px;
+}
+
+#scan-status {
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #ffffff;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    margin: 0;
+}
+
+#scan-status.detected {
+    background-color: #176B45;
+}
+
+/* Small screens */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 32px;
+        margin-top: 25px;
+    }
+
+    .welcome {
+        padding: 20px 14px 40px;
+    }
+
+    .planet-selection {
+        gap: 12px;
+    }
+
+    .planet-card {
+        min-height: 150px;
+        padding: 12px 6px;
+    }
+
+    .planet-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .saturn-icon::after {
+        width: 88px;
+        left: -19px;
+        top: 17px;
+    }
 }
