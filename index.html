@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Solar System AR</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- A-Frame -->
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+
+    <!-- MindAR -->
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+</head>
+
+<body>
+
+    <!-- Welcome screen -->
+    <main class="welcome" id="welcome-screen">
+
+        <h1>Solar System AR</h1>
+
+        <p>
+            Discover the wonders of our solar system
+            through augmented reality.
+        </p>
+
+        <p class="subtitle">
+            Explore Earth, Mars, Jupiter and Saturn!
+        </p>
+
+        <button id="start-button">
+            Start Experience
+        </button>
+
+    </main>
+
+
+    <!-- AR container -->
+    <div id="ar-container" class="ar-hidden">
+
+        <a-scene
+            mindar-image="imageTargetSrc: assets/targets/targets.mind; autoStart: false;"
+            embedded
+            color-space="sRGB"
+            renderer="colorManagement: true, physicallyCorrectLights"
+            vr-mode-ui="enabled: false"
+            device-orientation-permission-ui="enabled: false">
+
+            <!-- 3D models -->
+            <a-assets>
+
+                <a-asset-item
+                    id="earthModel"
+                    src="assets/models/planet.glb">
+                </a-asset-item>
+
+                <a-asset-item
+                    id="marsModel"
+                    src="assets/models/mars.glb">
+                </a-asset-item>
+
+                <a-asset-item
+                    id="jupiterModel"
+                    src="assets/models/jupiter.glb">
+                </a-asset-item>
+
+                <a-asset-item
+                    id="saturnModel"
+                    src="assets/models/saturn.glb">
+                </a-asset-item>
+
+            </a-assets>
+
+
+            <!-- Camera -->
+            <a-camera
+                position="0 0 0"
+                look-controls="enabled: false">
+            </a-camera>
+
+
+            <!-- EARTH - Target 0 -->
+            <a-entity mindar-image-target="targetIndex: 0">
+
+                <a-entity
+                    gltf-model="#earthModel"
+                    position="0 0 0"
+                    scale="0.30 0.30 0.30">
+                </a-entity>
+
+            </a-entity>
+
+
+            <!-- MARS - Target 1 -->
+            <a-entity mindar-image-target="targetIndex: 1">
+
+                <a-entity
+                    gltf-model="#marsModel"
+                    position="0 0 0"
+                    scale="0.15 0.15 0.15">
+                </a-entity>
+
+            </a-entity>
+
+
+            <!-- JUPITER - Target 2 -->
+            <a-entity mindar-image-target="targetIndex: 2">
+
+                <a-entity
+                    gltf-model="#jupiterModel"
+                    position="0 0 0"
+                    scale="0.15 0.15 0.15">
+                </a-entity>
+
+            </a-entity>
+
+
+            <!-- SATURN - Target 3 -->
+            <a-entity mindar-image-target="targetIndex: 3">
+
+                <a-entity
+                    gltf-model="#saturnModel"
+                    position="0 0 0"
+                    scale="0.15 0.15 0.15">
+                </a-entity>
+
+            </a-entity>
+
+        </a-scene>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>

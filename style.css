@@ -1,0 +1,58 @@
+
+/* Estilos generales de la página */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(180deg, #05051a, #101044);
+    color: white;
+    text-align: center;
+    min-height: 100vh;
+}
+
+/* Título principal */
+h1 {
+    font-size: 40px;
+    margin-top: 100px;
+    color: #ffffff;
+}
+
+/* Texto descriptivo */
+p {
+    font-size: 18px;
+    color: #c5c5e8;
+}
+
+/* Contenedor de bienvenida */
+.welcome {
+    padding: 40px 20px;
+    margin-top: 80px;
+}
+
+/* Subtítulo */
+.subtitle {
+    margin-top: 30px;
+    font-size: 16px;
+    color: #ffffff;
+}
+/* AR scene */
+#ar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 0;
+    visibility: hidden;
+}
+
+/* Show AR scene after clicking Start */
+#ar-container.ar-visible {
+    visibility: visible;
+}
+
+/* Welcome screen */
+.welcome {
+    position: relative;
+    z-index: 10;
+}   
