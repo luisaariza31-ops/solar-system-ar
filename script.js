@@ -20,7 +20,7 @@ const planets = [
     { index: 3, name: "SATURN" }
 ];
 
-// The selected planet is Earth by default
+// Selected planet is Earth by default
 let selectedPlanetIndex = 0;
 
 // Control scanner visibility
@@ -41,6 +41,27 @@ function updateScanMessage(message, detected) {
     } else {
         scanStatus.classList.remove("detected");
     }
+}
+
+// Select which planet content can be displayed
+function updatePlanetVisibility() {
+
+    planets.forEach(function (planet) {
+
+        const target = document.querySelector(
+            '[mindar-image-target="targetIndex: ' + planet.index + '"]'
+        );
+
+        if (target) {
+
+            // Only the selected planet can display its 3D content
+            const isSelected = planet.index === selectedPlanetIndex;
+
+            target.object3D.children.forEach(function (child) {
+                child.visible = isSelected;
+            });
+        }
+    });
 }
 
 // Select a planet from the menu
@@ -71,13 +92,6 @@ function preparePlanetSelection() {
     });
 }
 
-// Control the visibility of each planet model
-function setPlanetContentVisibility(target, visible) {
-    target.object3D.children.forEach(function (child) {
-        child.visible = visible;
-    });
-}
-
 // Listen for planet recognition
 function preparePlanetRecognition() {
 
@@ -91,14 +105,15 @@ function preparePlanetRecognition() {
 
             target.addEventListener("targetFound", function () {
 
+                // Apply visibility rules to ALL planets
+                updatePlanetVisibility();
+
                 if (planet.index === selectedPlanetIndex) {
 
                     updateScanMessage(
                         planet.name + " detected!",
                         true
                     );
-
-                    setPlanetContentVisibility(target, true);
 
                 } else {
 
@@ -108,15 +123,14 @@ function preparePlanetRecognition() {
                         " card.",
                         false
                     );
-
-                    // Hide the content of the unselected planet
-                    setPlanetContentVisibility(target, false);
                 }
             });
 
             target.addEventListener("targetLost", function () {
 
-                setPlanetContentVisibility(target, true);
+                // Do not make every planet visible again.
+                // Keep only the selected planet visible.
+                updatePlanetVisibility();
 
                 updateScanMessage(
                     "Searching for " +
@@ -156,17 +170,8 @@ function prepareAR() {
             false
         );
 
-        // Restore all target contents before starting
-        planets.forEach(function (planet) {
-
-            const target = document.querySelector(
-                '[mindar-image-target="targetIndex: ' + planet.index + '"]'
-            );
-
-            if (target) {
-                setPlanetContentVisibility(target, true);
-            }
-        });
+        // Hide all planets except the selected one
+        updatePlanetVisibility();
 
         showScanner(true);
 
