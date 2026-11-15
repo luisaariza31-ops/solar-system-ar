@@ -73,41 +73,98 @@
                 look-controls="enabled: false">
             </a-camera>
 
-            <!-- EARTH -->
+
+            <!-- EARTH - TARGET 0 -->
             <a-entity mindar-image-target="targetIndex: 0">
 
+                <!-- Earth planet -->
                 <a-sphere
                     radius="0.5"
                     material="src: #earthTexture; roughness: 1"
                     animation="property: rotation; to: 0 360 0; dur: 20000; easing: linear; loop: true">
                 </a-sphere>
 
+                <!-- Earth information card -->
+                <a-plane
+                    position="0 1.05 0.02"
+                    width="1.7"
+                    height="0.65"
+                    material="color: #10243D; opacity: 0.9; transparent: true; side: double">
+                </a-plane>
+
+                <a-text
+                    value="EARTH&#10;Our home planet&#10;About 71% of its surface is covered by water."
+                    position="0 1.05 0.04"
+                    align="center"
+                    color="#FFFFFF"
+                    width="2.3"
+                    scale="0.7 0.7 0.7">
+                </a-text>
+
             </a-entity>
 
-            <!-- MARS -->
+
+            <!-- MARS - TARGET 1 -->
             <a-entity mindar-image-target="targetIndex: 1">
 
+                <!-- Mars planet -->
                 <a-sphere
                     radius="0.5"
                     material="src: #marsTexture; roughness: 1"
                     animation="property: rotation; to: 0 360 0; dur: 18000; easing: linear; loop: true">
                 </a-sphere>
 
+                <!-- Mars information card -->
+                <a-plane
+                    position="0 1.05 0.02"
+                    width="1.7"
+                    height="0.65"
+                    material="color: #10243D; opacity: 0.9; transparent: true; side: double">
+                </a-plane>
+
+                <a-text
+                    value="MARS&#10;The Red Planet&#10;It has the largest volcano in the solar system."
+                    position="0 1.05 0.04"
+                    align="center"
+                    color="#FFFFFF"
+                    width="2.3"
+                    scale="0.7 0.7 0.7">
+                </a-text>
+
             </a-entity>
 
-            <!-- JUPITER -->
+
+            <!-- JUPITER - TARGET 2 -->
             <a-entity mindar-image-target="targetIndex: 2">
 
+                <!-- Jupiter planet -->
                 <a-sphere
                     radius="0.65"
                     material="src: #jupiterTexture; roughness: 1"
                     animation="property: rotation; to: 0 360 0; dur: 25000; easing: linear; loop: true">
                 </a-sphere>
 
+                <!-- Jupiter information card -->
+                <a-plane
+                    position="0 1.25 0.02"
+                    width="1.7"
+                    height="0.65"
+                    material="color: #10243D; opacity: 0.9; transparent: true; side: double">
+                </a-plane>
+
+                <a-text
+                    value="JUPITER&#10;The Largest Planet&#10;It has a giant storm called the Great Red Spot."
+                    position="0 1.25 0.04"
+                    align="center"
+                    color="#FFFFFF"
+                    width="2.3"
+                    scale="0.7 0.7 0.7">
+                </a-text>
+
             </a-entity>
 
-            
-            <!-- SATURN -->
+
+            <!-- SATURN - TARGET 3 -->
             <a-entity mindar-image-target="targetIndex: 3">
 
                 <!-- Saturn group -->
@@ -139,8 +196,24 @@
 
                 </a-entity>
 
-            </a-entity>
+                <!-- Saturn information card -->
+                <a-plane
+                    position="0 1.05 0.02"
+                    width="1.7"
+                    height="0.65"
+                    material="color: #10243D; opacity: 0.9; transparent: true; side: double">
+                </a-plane>
 
+                <a-text
+                    value="SATURN&#10;The Ringed Planet&#10;Its rings are made mostly of ice and rock."
+                    position="0 1.05 0.04"
+                    align="center"
+                    color="#FFFFFF"
+                    width="2.3"
+                    scale="0.7 0.7 0.7">
+                </a-text>
+
+            </a-entity>
 
         </a-scene>
 
