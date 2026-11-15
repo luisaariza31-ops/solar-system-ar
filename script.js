@@ -12,7 +12,6 @@ const selectionMessage = document.getElementById("selection-message");
 
 const planetCards = document.querySelectorAll(".planet-card");
 
-// Available planets
 const planets = [
     { index: 0, name: "EARTH" },
     { index: 1, name: "MARS" },
@@ -20,10 +19,9 @@ const planets = [
     { index: 3, name: "SATURN" }
 ];
 
-// Selected planet is Earth by default
 let selectedPlanetIndex = 0;
 
-// Control scanner visibility
+// Show or hide MindAR scanner
 function showScanner(show) {
     const scannerElements = document.querySelectorAll(".mindar-ui-overlay");
 
@@ -43,7 +41,7 @@ function updateScanMessage(message, detected) {
     }
 }
 
-// Select which planet content can be displayed
+// Show only the selected planet
 function updatePlanetVisibility() {
 
     planets.forEach(function (planet) {
@@ -54,17 +52,20 @@ function updatePlanetVisibility() {
 
         if (target) {
 
-            // Only the selected planet can display its 3D content
-            const isSelected = planet.index === selectedPlanetIndex;
+            const content = target.querySelector(".planet-content");
 
-            target.object3D.children.forEach(function (child) {
-                child.visible = isSelected;
-            });
+            if (content) {
+
+                const isSelected =
+                    planet.index === selectedPlanetIndex;
+
+                content.setAttribute("visible", isSelected);
+            }
         }
     });
 }
 
-// Select a planet from the menu
+// Select a planet
 function preparePlanetSelection() {
 
     planetCards.forEach(function (card) {
@@ -75,15 +76,12 @@ function preparePlanetSelection() {
 
             const selectedPlanet = planets[selectedPlanetIndex];
 
-            // Remove selection from all cards
             planetCards.forEach(function (otherCard) {
                 otherCard.classList.remove("selected");
             });
 
-            // Highlight selected card
             card.classList.add("selected");
 
-            // Update selection message
             selectionMessage.textContent =
                 "Selected planet: " + selectedPlanet.name;
 
@@ -92,7 +90,7 @@ function preparePlanetSelection() {
     });
 }
 
-// Listen for planet recognition
+// Detect planets
 function preparePlanetRecognition() {
 
     planets.forEach(function (planet) {
@@ -105,7 +103,7 @@ function preparePlanetRecognition() {
 
             target.addEventListener("targetFound", function () {
 
-                // Apply visibility rules to ALL planets
+                // Always hide the planets that were not selected
                 updatePlanetVisibility();
 
                 if (planet.index === selectedPlanetIndex) {
@@ -128,8 +126,7 @@ function preparePlanetRecognition() {
 
             target.addEventListener("targetLost", function () {
 
-                // Do not make every planet visible again.
-                // Keep only the selected planet visible.
+                // Keep the visibility of only the selected planet
                 updatePlanetVisibility();
 
                 updateScanMessage(
@@ -143,7 +140,7 @@ function preparePlanetRecognition() {
     });
 }
 
-// Start and exit AR
+// Prepare AR
 function prepareAR() {
 
     preparePlanetSelection();
@@ -170,7 +167,7 @@ function prepareAR() {
             false
         );
 
-        // Hide all planets except the selected one
+        // Set visibility before starting the camera
         updatePlanetVisibility();
 
         showScanner(true);
@@ -199,8 +196,6 @@ function prepareAR() {
     // Exit AR
     exitButton.addEventListener("click", function () {
 
-        console.log("Exit button clicked");
-
         try {
 
             const arSystem = scene.systems["mindar-image-system"];
@@ -223,6 +218,8 @@ function prepareAR() {
             welcomeScreen.style.display = "block";
             startButton.disabled = false;
 
+            updatePlanetVisibility();
+
             updateScanMessage(
                 "Searching for " +
                 planets[selectedPlanetIndex].name +
@@ -240,5 +237,5 @@ if (scene.hasLoaded) {
     scene.addEventListener("loaded", prepareAR, { once: true });
 }
 
-// Hide scanner at the beginning
+// Hide scanner initially
 showScanner(false);

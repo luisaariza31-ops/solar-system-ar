@@ -116,55 +116,61 @@
             <!-- EARTH - TARGET 0 -->
             <a-entity mindar-image-target="targetIndex: 0">
 
-                <a-sphere
-                    radius="0.5"
-                    material="src: #earthTexture; roughness: 1"
-                    animation="property: rotation; to: 0 360 0; dur: 20000; easing: linear; loop: true">
-                </a-sphere>
+                <a-entity class="planet-content" visible="false">
 
-                <a-plane
-                    position="0 1.05 0.02"
-                    width="1.7"
-                    height="0.65"
-                    material="color: #10243D; opacity: 0.9; transparent: true; side: double">
-                </a-plane>
+                    <a-sphere
+                        radius="0.5"
+                        material="src: #earthTexture; roughness: 1"
+                        animation="property: rotation; to: 0 360 0; dur: 20000; easing: linear; loop: true">
+                    </a-sphere>
 
-                <a-text
-                    value="EARTH&#10;Our home planet&#10;About 71% of its surface is covered by water."
-                    position="0 1.05 0.04"
-                    align="center"
-                    color="#FFFFFF"
-                    width="2.3"
-                    scale="0.7 0.7 0.7">
-                </a-text>
+                    <a-plane
+                        position="0 1.05 0.02"
+                        width="1.7"
+                        height="0.65"
+                        material="color: #10243D; opacity: 0.9; transparent: true; side: double">
+                    </a-plane>
 
+                    <a-text
+                        value="EARTH&#10;Our home planet&#10;About 71% of its surface is covered by water."
+                        position="0 1.05 0.04"
+                        align="center"
+                        color="#FFFFFF"
+                        width="2.3"
+                        scale="0.7 0.7 0.7">
+                    </a-text>
+                </a-entity>
             </a-entity>
 
 
             <!-- MARS - TARGET 1 -->
             <a-entity mindar-image-target="targetIndex: 1">
 
-                <a-sphere
-                    radius="0.5"
-                    material="src: #marsTexture; roughness: 1"
-                    animation="property: rotation; to: 0 360 0; dur: 18000; easing: linear; loop: true">
-                </a-sphere>
+                <a-entity class="planet-content" visible="false">
 
-                <a-plane
-                    position="0 1.05 0.02"
-                    width="1.7"
-                    height="0.65"
-                    material="color: #10243D; opacity: 0.9; transparent: true; side: double">
-                </a-plane>
+                    <a-sphere
+                        radius="0.5"
+                        material="src: #marsTexture; roughness: 1"
+                        animation="property: rotation; to: 0 360 0; dur: 18000; easing: linear; loop: true">
+                    </a-sphere>
 
-                <a-text
-                    value="MARS&#10;The Red Planet&#10;It has the largest volcano in the solar system."
-                    position="0 1.05 0.04"
-                    align="center"
-                    color="#FFFFFF"
-                    width="2.3"
-                    scale="0.7 0.7 0.7">
-                </a-text>
+                    <a-plane
+                        position="0 1.05 0.02"
+                        width="1.7"
+                        height="0.65"
+                        material="color: #10243D; opacity: 0.9; transparent: true; side: double">
+                    </a-plane>
+
+                    <a-text
+                        value="MARS&#10;The Red Planet&#10;It has the largest volcano in the solar system."
+                        position="0 1.05 0.04"
+                        align="center"
+                        color="#FFFFFF"
+                        width="2.3"
+                        scale="0.7 0.7 0.7">
+                    </a-text>
+
+                </a-entity>
 
             </a-entity>
 
@@ -172,57 +178,63 @@
             <!-- JUPITER - TARGET 2 -->
             <a-entity mindar-image-target="targetIndex: 2">
 
-                <a-sphere
-                    radius="0.65"
-                    material="src: #jupiterTexture; roughness: 1"
-                    animation="property: rotation; to: 0 360 0; dur: 25000; easing: linear; loop: true">
-                </a-sphere>
+                <a-entity class="planet-content" visible="false">
 
-                <a-plane
-                    position="0 1.25 0.02"
-                    width="1.7"
-                    height="0.65"
-                    material="color: #10243D; opacity: 0.9; transparent: true; side: double">
-                </a-plane>
+                    <a-sphere
+                        radius="0.65"
+                        material="src: #jupiterTexture; roughness: 1"
+                        animation="property: rotation; to: 0 360 0; dur: 25000; easing: linear; loop: true">
+                    </a-sphere>
 
-                <a-text
-                    value="JUPITER&#10;The Largest Planet&#10;It has a giant storm called the Great Red Spot."
-                    position="0 1.25 0.04"
-                    align="center"
-                    color="#FFFFFF"
-                    width="2.3"
-                    scale="0.7 0.7 0.7">
-                </a-text>
+                    <a-plane
+                        position="0 1.25 0.02"
+                        width="1.7"
+                        height="0.65"
+                        material="color: #10243D; opacity: 0.9; transparent: true; side: double">
+                    </a-plane>
 
+                    <a-text
+                        value="JUPITER&#10;The Largest Planet&#10;It has a giant storm called the Great Red Spot."
+                        position="0 1.25 0.04"
+                        align="center"
+                        color="#FFFFFF"
+                        width="2.3"
+                        scale="0.7 0.7 0.7">
+                    </a-text>
+                </a-entity>
             </a-entity>
 
 
             <!-- SATURN - TARGET 3 -->
             <a-entity mindar-image-target="targetIndex: 3">
 
-                <a-entity
-                    position="0 0 0"
-                    scale="0.65 0.65 0.65"
-                    animation="property: rotation; to: 0 360 0; dur: 60000; easing: linear; loop: true">
+                <a-entity class="planet-content" visible="false">
 
-                    <a-sphere
-                        radius="0.5"
-                        material="src: #saturnTexture; roughness: 1">
-                    </a-sphere>
+                    <a-entity
+                        position="0 0 0"
+                        scale="0.65 0.65 0.65"
+                        animation="property: rotation; to: 0 360 0; dur: 60000; easing: linear; loop: true">
 
-                    <a-ring
-                        radius-inner="0.62"
-                        radius-outer="1.05"
-                        rotation="75 0 0"
-                        material="color: #D8C49A; side: double; opacity: 0.85; transparent: true">
-                    </a-ring>
+                        <a-sphere
+                            radius="0.5"
+                            material="src: #saturnTexture; roughness: 1">
+                        </a-sphere>
 
-                    <a-ring
-                        radius-inner="1.06"
-                        radius-outer="1.16"
-                        rotation="75 0 0"
-                        material="color: #A88A60; side: double; opacity: 0.65; transparent: true">
-                    </a-ring>
+                        <a-ring
+                            radius-inner="0.62"
+                            radius-outer="1.05"
+                            rotation="75 0 0"
+                            material="color: #D8C49A; side: double; opacity: 0.85; transparent: true">
+                        </a-ring>
+
+                        <a-ring
+                            radius-inner="1.06"
+                            radius-outer="1.16"
+                            rotation="75 0 0"
+                            material="color: #A88A60; side: double; opacity: 0.65; transparent: true">
+                        </a-ring>
+
+                    </a-entity>
 
                 </a-entity>
 
