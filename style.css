@@ -56,3 +56,23 @@ p {
     position: relative;
     z-index: 10;
 }   
+/* Exit AR button */
+.exit-button {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 99999;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #10243D;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.exit-button:hover {
+    background-color: #1D4268;
+}
