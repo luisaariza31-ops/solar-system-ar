@@ -39,7 +39,6 @@
 
     </main>
 
-
     <!-- AR container -->
     <div id="ar-container" class="ar-hidden">
 
@@ -51,31 +50,22 @@
             vr-mode-ui="enabled: false"
             device-orientation-permission-ui="enabled: false">
 
-            <!-- 3D models -->
+            <!-- Planet textures -->
             <a-assets>
 
-                <a-asset-item
-                    id="earthModel"
-                    src="assets/models/planet.glb">
-                </a-asset-item>
+                <img id="earthTexture"
+                     src="assets/textures/8k_earth.jpg">
 
-                <a-asset-item
-                    id="marsModel"
-                    src="assets/models/mars.glb">
-                </a-asset-item>
+                <img id="marsTexture"
+                     src="assets/textures/8k_mars.jpg">
 
-                <a-asset-item
-                    id="jupiterModel"
-                    src="assets/models/jupiter.glb">
-                </a-asset-item>
+                <img id="jupiterTexture"
+                     src="assets/textures/8k_jupiter.jpg">
 
-                <a-asset-item
-                    id="saturnModel"
-                    src="assets/models/saturn.glb">
-                </a-asset-item>
+                <img id="saturnTexture"
+                     src="assets/textures/8k_saturn.jpg">
 
             </a-assets>
-
 
             <!-- Camera -->
             <a-camera
@@ -83,51 +73,60 @@
                 look-controls="enabled: false">
             </a-camera>
 
-
-            <!-- EARTH - Target 0 -->
+            <!-- EARTH -->
             <a-entity mindar-image-target="targetIndex: 0">
 
-                <a-entity
-                    gltf-model="#earthModel"
+                <a-sphere
+                    radius="0.5"
                     position="0 0 0"
-                    scale="0.40 0.40 0.40">
-                </a-entity>
+                    material="src: #earthTexture; roughness: 1"
+                    animation="property: rotation; to: 0 360 0; dur: 20000; easing: linear; loop: true">
+                </a-sphere>
 
             </a-entity>
 
-
-            <!-- MARS - Target 1 -->
+            <!-- MARS -->
             <a-entity mindar-image-target="targetIndex: 1">
 
-                <a-entity
-                    gltf-model="#marsModel"
+                <a-sphere
+                    radius="0.5"
                     position="0 0 0"
-                    scale="2 2 2">
-                </a-entity>
+                    material="src: #marsTexture; roughness: 1"
+                    animation="property: rotation; to: 0 360 0; dur: 18000; easing: linear; loop: true">
+                </a-sphere>
 
             </a-entity>
 
-
-            <!-- JUPITER - Target 2 -->
+            <!-- JUPITER -->
             <a-entity mindar-image-target="targetIndex: 2">
 
-                <a-entity
-                    gltf-model="#jupiterModel"
+                <a-sphere
+                    radius="0.65"
                     position="0 0 0"
-                    scale="2 2 2">
-                </a-entity>
+                    material="src: #jupiterTexture; roughness: 1"
+                    animation="property: rotation; to: 0 360 0; dur: 25000; easing: linear; loop: true">
+                </a-sphere>
 
             </a-entity>
 
-
-            <!-- SATURN - Target 3 -->
+            <!-- SATURN -->
             <a-entity mindar-image-target="targetIndex: 3">
 
-                <a-entity
-                    gltf-model="#saturnModel"
+                <a-sphere
+                    radius="0.5"
                     position="0 0 0"
-                    scale="2 2 2">
-                </a-entity>
+                    material="src: #saturnTexture; roughness: 1"
+                    animation="property: rotation; to: 0 360 0; dur: 22000; easing: linear; loop: true">
+                </a-sphere>
+
+                <!-- Saturn rings -->
+                <a-torus
+                    position="0 0 0"
+                    radius="0.78"
+                    radius-tubular="0.035"
+                    rotation="75 0 0"
+                    color="#C9A66B">
+                </a-torus>
 
             </a-entity>
 
